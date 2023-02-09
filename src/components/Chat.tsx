@@ -1,4 +1,4 @@
-import { collection } from "firebase/firestore";
+import { collection, orderBy, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { z } from "zod";
 import { auth, firestore } from "../lib/firebase";
@@ -13,12 +13,10 @@ const messageSchema = z.object({
 type Message = z.infer<typeof messageSchema>;
 
 const Chat = () => {
-  const [value, loading, error] = useCollection(
-    collection(firestore, "messages"),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
+  const q = query(collection(firestore, "messages"), orderBy("timestamp"));
+  const [value, loading, error] = useCollection(q, {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   if (error) return <strong>Error: {JSON.stringify(error)}</strong>;
 
