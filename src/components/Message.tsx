@@ -1,7 +1,7 @@
 import cls from "classnames";
 type MessageProps = {
   message: {
-    message: string;
+    message?: string;
     username: string;
   };
 };
@@ -15,7 +15,7 @@ const Message: React.FC<MessageProps> = ({ message }) => {
         "m-4 box-border min-h-[2.25rem] w-fit max-w-[66%]  py-2 px-4  shadow-chat"
       )}
     >
-      {message.message}
+      {message.message ? message.message : <>Sent an image</>}
     </div>
   );
 };
