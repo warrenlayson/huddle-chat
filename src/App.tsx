@@ -1,7 +1,9 @@
 import { auth } from "./lib/firebase";
-import LoginForm from "./components/LoginForm";
-import Chat from "./components/Chat";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { lazy } from "react";
+
+const LoginForm = lazy(() => import("./components/LoginForm"));
+const Chat = lazy(() => import("./components/Chat"));
 
 function App() {
   const [user] = useAuthState(auth);
