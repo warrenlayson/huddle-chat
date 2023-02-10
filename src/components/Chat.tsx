@@ -23,7 +23,7 @@ const Chat = () => {
   if (!value && loading) return <span>Collection: loading...</span>;
 
   return (
-    <div className="m-4 flex h-full max-w-7xl flex-col shadow-chat-window">
+    <div className="m-4 flex h-full w-full max-w-7xl flex-col shadow-chat-window">
       {/* Tools */}
       <div className="flex shrink flex-grow-0 basis-0 items-center justify-between p-4">
         <button
@@ -41,7 +41,7 @@ const Chat = () => {
         ))}
       </div>
       {/* Send Message */}
-      <div className="flex shrink grow-0 basis-10 flex-row items-center justify-between p-4">
+      <div className="flex w-full shrink grow-0 basis-10 flex-row items-center justify-between p-4">
         <SendMessage />
       </div>
     </div>
